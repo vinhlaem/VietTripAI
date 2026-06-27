@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="VietTrip AI">
+  <defs>
+    <linearGradient id="bg" x1="8" y1="6" x2="56" y2="58" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0f766e"/>
+      <stop offset="0.58" stop-color="#125d72"/>
+      <stop offset="1" stop-color="#ff7a59"/>
+    </linearGradient>
+    <linearGradient id="route" x1="20" y1="18" x2="46" y2="48" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#fff0da"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="url(#bg)"/>
+  <circle cx="47" cy="17" r="6" fill="#fff0da" opacity="0.95"/>
+  <path d="M15 19c7 16 12 26 17 32 5-6 11-18 17-32" fill="none" stroke="url(#route)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M22 33c5-4 11-4 17 0" fill="none" stroke="#bff5ea" stroke-width="4" stroke-linecap="round" opacity="0.9"/>
+  <circle cx="15" cy="19" r="3" fill="#ffffff"/>
+  <circle cx="49" cy="19" r="3" fill="#ffffff"/>
+</svg>

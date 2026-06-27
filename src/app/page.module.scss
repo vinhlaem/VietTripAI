@@ -1,0 +1,8 @@
+.page {
+  min-height: 100vh;
+  overflow-x: clip;
+  background:
+    radial-gradient(circle at 18% 12%, rgba(35, 183, 171, 0.16), transparent 34rem),
+    radial-gradient(circle at 86% 2%, rgba(255, 138, 101, 0.18), transparent 30rem),
+    linear-gradient(180deg, #f8fbf8 0%, #eef7f4 42%, #fff8f1 100%);
+}

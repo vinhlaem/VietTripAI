@@ -1,0 +1,272 @@
+{
+  "Metadata": {
+    "title": "VietTrip AI | Plan your Vietnam trip with AI",
+    "description": "Plan a smarter Vietnam trip with VietTrip AI, from travel area, budget, interests, and travel days to a polished daily itinerary."
+  },
+  "Common": {
+    "brand": "VietTrip AI",
+    "navLabel": "Main navigation",
+    "homeAria": "VietTrip AI home",
+    "languageLabel": "Language",
+    "vietnamese": "Tiếng Việt",
+    "english": "English",
+    "noSignup": "No signup",
+    "tripSnapshot": "Trip snapshot"
+  },
+  "Hero": {
+    "imageAlt": "Sunrise over a Vietnam coastal landscape",
+    "eyebrow": "AI itinerary studio for Vietnam",
+    "title": "Plan your Vietnam trip with AI",
+    "subtitle": "Choose a travel area, budget, travel days, and interests. VietTrip AI will generate a smart itinerary for you.",
+    "cta": "Build my trip",
+    "navAction": "Start planning",
+    "previewAria": "Trip preview",
+    "previewTitle": "Đà Nẵng escape",
+    "previewDays": "3 days",
+    "previewBudget": "5M VND"
+  },
+  "PlannerForm": {
+    "eyebrow": "Trip Planner",
+    "title": "Shape the trip in seconds",
+    "description": "Choose your travel area, budget, travel days, and interests to generate an itinerary powered by places, weather, and AI.",
+    "details": "Planner details",
+    "formTitle": "Tell us your travel style",
+    "destination": "Travel Area",
+    "destinationPlaceholder": "Choose province/city",
+    "destinationLoading": "Loading travel areas...",
+    "destinationLoadError": "Could not load travel areas. Using available areas.",
+    "days": "Number of days",
+    "daysPlaceholder": "Select days",
+    "budget": "Budget",
+    "budgetPlaceholder": "Select budget",
+    "interests": "Interests",
+    "interestsEmpty": "Select at least one interest",
+    "interestsSelected": "{count, plural, one {# interest selected} other {# interests selected}}",
+    "submit": "Generate itinerary",
+    "submitting": "Generating itinerary",
+    "destinationLabel": "Travel Area",
+    "provinceLabel": "Province/City",
+    "touristAreaLabel": "Travel area/place",
+    "touristAreaPlaceholder": "Choose a travel area",
+    "touristAreaHelper": "Some provinces are broad, choose a specific travel area for a more accurate itinerary.",
+    "touristAreaFallback": "No curated travel areas found, the selected province/city will be used."
+  },
+  "Interests": {
+    "ariaLabel": "Travel interests",
+    "Beach": "Beach",
+    "Coffee": "Coffee",
+    "Local food": "Local food",
+    "Culture": "Culture",
+    "Nature": "Nature",
+    "Photography": "Photography",
+    "Night market": "Night market",
+    "Family friendly": "Family friendly"
+  },
+  "Validation": {
+    "destination": "Choose a province/city.",
+    "days": "Choose travel days.",
+    "budget": "Choose a budget.",
+    "interests": "Pick at least one interest."
+  },
+  "Result": {
+    "eyebrow": "Smart itinerary",
+    "days": "{count, plural, one {# day} other {# days}}",
+    "itinerary": "Itinerary",
+    "day": "Day",
+    "daysData": {
+      "1": {
+        "title": "Beach arrival and city lights",
+        "summary": "Ease into Đà Nẵng with coastal air, local flavor, and sunset views."
+      },
+      "2": {
+        "title": "Mountain views and riverside coffee",
+        "summary": "Spend the day above the clouds, then come back for a slower evening."
+      },
+      "3": {
+        "title": "Heritage corners and market browsing",
+        "summary": "Wrap with caves, seafood, local shopping, and an easy riverside walk."
+      }
+    },
+    "activities": {
+      "Mỹ Khê Beach": "Mỹ Khê Beach",
+      "Local Mì Quảng": "Local Mì Quảng",
+      "Sơn Trà Peninsula": "Sơn Trà Peninsula",
+      "Dragon Bridge": "Dragon Bridge",
+      "Bà Nà Hills": "Bà Nà Hills",
+      "Golden Bridge": "Golden Bridge",
+      "Han River Coffee": "Han River Coffee",
+      "Marble Mountains": "Marble Mountains",
+      "Seafood Lunch": "Seafood Lunch",
+      "Han Market": "Han Market",
+      "Riverside Walk": "Riverside Walk"
+    }
+  },
+  "Places": {
+    "title": "Suggested Tourist Places",
+    "nearby": "Tourist places near the selected area",
+    "distance": "Distance",
+    "category": "Category",
+    "loading": "Loading tourist places...",
+    "error": "Unable to load tourist places.",
+    "empty": "No suitable tourist places found.",
+    "addressUnavailable": "Address unavailable",
+    "selectPlace": "View {name} on the map",
+    "distanceMeters": "{value} m",
+    "distanceKilometers": "{value} km",
+    "categoryLabels": {
+      "touristAttraction": "Tourist attraction",
+      "museum": "Museum",
+      "beach": "Beach",
+      "park": "Park",
+      "viewpoint": "Viewpoint",
+      "historicSite": "Historic site",
+      "nature": "Nature"
+    }
+  },
+  "Weather": {
+    "title": "Weather",
+    "description": "Forecast based on the selected travel area coordinates.",
+    "current": "Current Weather",
+    "forecast": "3-Day Forecast",
+    "humidity": "Humidity",
+    "wind": "Wind",
+    "feelsLike": "Feels Like",
+    "sunrise": "Sunrise",
+    "sunset": "Sunset",
+    "rain": "Rain Chance",
+    "loading": "Loading weather...",
+    "error": "Unable to load weather.",
+    "conditions": {
+      "clearSky": "Clear Sky",
+      "mainlyClear": "Mainly Clear",
+      "partlyCloudy": "Partly Cloudy",
+      "overcast": "Overcast",
+      "fog": "Fog",
+      "drizzle": "Drizzle",
+      "rain": "Rain",
+      "snow": "Snow",
+      "rainShowers": "Rain Showers",
+      "thunderstorm": "Thunderstorm",
+      "unknown": "Unknown"
+    },
+    "temperatureValue": "{value}°C",
+    "temperatureRange": "{max}° / {min}°",
+    "percentValue": "{value}%",
+    "windSpeedValue": "{value} km/h"
+  },
+  "Cost": {
+    "title": "Estimated Cost",
+    "description": "Estimated spend split based on your budget and planned activities.",
+    "total": "Total",
+    "items": {
+      "Food": "Food",
+      "Transport": "Transport",
+      "Tickets": "Tickets",
+      "Coffee": "Coffee",
+      "CoffeeExtra": "Coffee & extra"
+    }
+  },
+  "Loading": {
+    "ariaLabel": "Generating itinerary"
+  },
+  "EmptyState": {
+    "ariaLabel": "Itinerary area",
+    "eyebrow": "Ready when you are",
+    "title": "Your itinerary will appear here",
+    "description": "Pick the essentials to generate a plan with daily stops, weather, places, and estimated costs."
+  },
+  "Map": {
+    "eyebrow": "Visual route",
+    "title": "Trip Map",
+    "description": "Showing {count} suggested places near the selected area.",
+    "loading": "Loading trip map",
+    "locationLoading": "Resolving location...",
+    "locationError": "Unable to resolve location.",
+    "markerLabel": "Place",
+    "plannedDay": "Day {day}",
+    "categories": {
+      "Beach": "Beach",
+      "Nature": "Nature",
+      "Bridge": "Iconic bridge",
+      "Mountain": "Mountain",
+      "Photo spot": "Photo spot",
+      "Culture": "Culture",
+      "Market": "Local market"
+    },
+    "locations": {
+      "myKheBeach": {
+        "description": "A wide beachfront stop to begin the trip with sun, sea breeze, and an easy pace."
+      },
+      "sonTraPeninsula": {
+        "description": "A green coastal route with ocean views, ideal for nature time and wide photos."
+      },
+      "dragonBridge": {
+        "description": "A central city icon that feels best after sunset along the Han River."
+      },
+      "baNaHills": {
+        "description": "A highland day trip with cooler air, mountain views, and plenty to explore."
+      },
+      "goldenBridge": {
+        "description": "The famous mountain bridge setting, perfect for memorable travel photos."
+      },
+      "marbleMountains": {
+        "description": "A cluster of limestone peaks, caves, and temples for a culture-rich half day."
+      },
+      "hanMarket": {
+        "description": "A lively local market for gifts, snacks, and a glimpse of everyday Đà Nẵng."
+      }
+    },
+    "selectedMarkerLabel": "Selected place"
+  },
+  "Planner": {
+    "summaryTitle": "Trip Summary",
+    "warningsTitle": "Trip Notes",
+    "generatedFromRealData": "Your itinerary is ready.",
+    "fallbackNotice": "Your itinerary stays flexible with the available details.",
+    "day": "Day",
+    "summary": {
+      "realData": "This {days}-day plan for {destination} is organized around nearby tourist places, selected interests, and available weather.",
+      "basicData": "This {days}-day plan for {destination} uses flexible suggestions because suitable places are not ready."
+    },
+    "warnings": {
+      "placesFallback": "Suitable places are not available, so the itinerary keeps activities flexible.",
+      "weatherFallback": "Weather is not ready, so check conditions again before departure.",
+      "rain": "Rain is possible on some days, so keep indoor or cafe options in mind.",
+      "hot": "Some periods may feel hot, so plan rest breaks and carry water.",
+      "goodWeather": "Some days look suitable for outdoor and scenic activities."
+    },
+    "timeOfDay": {
+      "morning": "Morning",
+      "lunch": "Lunch",
+      "afternoon": "Afternoon",
+      "evening": "Evening"
+    },
+    "dayTitles": {
+      "1": "Ease into the trip",
+      "2": "Explore the local rhythm",
+      "3": "Highlights and slower moments",
+      "4": "Nature and culture pockets",
+      "5": "A gentle final day"
+    },
+    "activityTitles": {
+      "localFood": "Try local food",
+      "lunchBreak": "Flexible lunch break",
+      "nightMarket": "Night market walk",
+      "coffeeBreak": "Coffee break",
+      "slowStart": "Slow start",
+      "riversideWalk": "Relaxed city walk"
+    },
+    "activityDescriptions": {
+      "explorePlace": "Explore {place} at an easy pace and leave room to notice the surrounding area.",
+      "localFood": "Use this stop to try local food that fits the day and budget.",
+      "lunchBreak": "Pause for lunch near the current area to keep travel time light.",
+      "nightMarket": "Close the day with local atmosphere, snacks, and small finds.",
+      "coffeeBreak": "Pick a nearby cafe to rest and review the next stops.",
+      "slowStart": "Begin with breakfast, essentials, and an unhurried transfer.",
+      "riversideWalk": "Spend the evening walking, taking photos, and enjoying the city pace."
+    },
+    "aiEnhanced": "AI enhanced",
+    "basicItinerary": "Basic itinerary",
+    "aiLoading": "AI is optimizing your itinerary..."
+  }
+}
