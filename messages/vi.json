@@ -1,0 +1,272 @@
+{
+  "Metadata": {
+    "title": "VietTrip AI | Lên lịch trình du lịch Việt Nam bằng AI",
+    "description": "Lên lịch trình du lịch Việt Nam thông minh với VietTrip AI, từ khu vực du lịch, ngân sách, sở thích đến gợi ý từng ngày."
+  },
+  "Common": {
+    "brand": "VietTrip AI",
+    "navLabel": "Điều hướng chính",
+    "homeAria": "Trang chủ VietTrip AI",
+    "languageLabel": "Ngôn ngữ",
+    "vietnamese": "Tiếng Việt",
+    "english": "English",
+    "noSignup": "Không cần đăng ký",
+    "tripSnapshot": "Tổng quan nhanh"
+  },
+  "Hero": {
+    "imageAlt": "Bình minh trên khung cảnh biển Việt Nam",
+    "eyebrow": "Studio lịch trình AI cho Việt Nam",
+    "title": "Lên lịch trình du lịch Việt Nam bằng AI",
+    "subtitle": "Chọn khu vực du lịch, ngân sách, số ngày và sở thích của bạn. VietTrip AI sẽ tạo lịch trình thông minh cho chuyến đi.",
+    "cta": "Bắt đầu lên lịch trình",
+    "navAction": "Lên lịch trình",
+    "previewAria": "Xem trước chuyến đi",
+    "previewTitle": "Kỳ nghỉ Đà Nẵng",
+    "previewDays": "3 ngày",
+    "previewBudget": "5 triệu VND"
+  },
+  "PlannerForm": {
+    "eyebrow": "Công cụ lập lịch trình",
+    "title": "Định hình chuyến đi trong vài giây",
+    "description": "Chọn khu vực du lịch, ngân sách, số ngày và sở thích để tạo lịch trình dựa trên địa điểm, thời tiết và AI.",
+    "details": "Thông tin chuyến đi",
+    "formTitle": "Chia sẻ phong cách du lịch của bạn",
+    "destination": "Khu vực du lịch",
+    "destinationPlaceholder": "Chọn tỉnh/thành",
+    "destinationLoading": "Đang tải khu vực du lịch...",
+    "destinationLoadError": "Không thể tải danh sách khu vực du lịch. Đang dùng danh sách có sẵn.",
+    "days": "Số ngày",
+    "daysPlaceholder": "Chọn số ngày",
+    "budget": "Ngân sách",
+    "budgetPlaceholder": "Chọn ngân sách",
+    "interests": "Sở thích",
+    "interestsEmpty": "Chọn ít nhất một sở thích",
+    "interestsSelected": "{count} sở thích đã chọn",
+    "submit": "Tạo lịch trình",
+    "submitting": "Đang tạo lịch trình",
+    "destinationLabel": "Khu vực du lịch",
+    "provinceLabel": "Tỉnh/thành",
+    "touristAreaLabel": "Khu vực/địa điểm du lịch",
+    "touristAreaPlaceholder": "Chọn khu vực du lịch",
+    "touristAreaHelper": "Một số tỉnh khá rộng, hãy chọn khu vực du lịch cụ thể để lịch trình chính xác hơn.",
+    "touristAreaFallback": "Chưa có dữ liệu khu vực nổi bật, hệ thống sẽ dùng tỉnh/thành đã chọn."
+  },
+  "Interests": {
+    "ariaLabel": "Sở thích du lịch",
+    "Beach": "Biển",
+    "Coffee": "Cà phê",
+    "Local food": "Ẩm thực địa phương",
+    "Culture": "Văn hóa",
+    "Nature": "Thiên nhiên",
+    "Photography": "Chụp ảnh",
+    "Night market": "Chợ đêm",
+    "Family friendly": "Phù hợp gia đình"
+  },
+  "Validation": {
+    "destination": "Vui lòng chọn tỉnh/thành.",
+    "days": "Vui lòng chọn số ngày.",
+    "budget": "Vui lòng chọn ngân sách.",
+    "interests": "Vui lòng chọn ít nhất một sở thích."
+  },
+  "Result": {
+    "eyebrow": "Lịch trình thông minh",
+    "days": "{count} ngày",
+    "itinerary": "Lịch trình",
+    "day": "Ngày",
+    "daysData": {
+      "1": {
+        "title": "Ngày đầu bên biển và ánh đèn thành phố",
+        "summary": "Bắt nhịp Đà Nẵng với gió biển, món địa phương và khung cảnh hoàng hôn."
+      },
+      "2": {
+        "title": "Cảnh núi và cà phê ven sông",
+        "summary": "Dành một ngày trên mây, rồi trở về thành phố cho buổi tối thong thả."
+      },
+      "3": {
+        "title": "Góc di sản và nhịp chợ địa phương",
+        "summary": "Kết chuyến bằng hang động, hải sản, mua sắm địa phương và dạo bộ ven sông."
+      }
+    },
+    "activities": {
+      "Mỹ Khê Beach": "Mỹ Khê Beach",
+      "Local Mì Quảng": "Mì Quảng địa phương",
+      "Sơn Trà Peninsula": "Sơn Trà Peninsula",
+      "Dragon Bridge": "Dragon Bridge",
+      "Bà Nà Hills": "Bà Nà Hills",
+      "Golden Bridge": "Golden Bridge",
+      "Han River Coffee": "Cà phê ven sông Hàn",
+      "Marble Mountains": "Marble Mountains",
+      "Seafood Lunch": "Bữa trưa hải sản",
+      "Han Market": "Han Market",
+      "Riverside Walk": "Dạo bộ ven sông"
+    }
+  },
+  "Places": {
+    "title": "Địa điểm du lịch gợi ý",
+    "nearby": "Địa điểm du lịch gần khu vực đã chọn",
+    "distance": "Khoảng cách",
+    "category": "Danh mục",
+    "loading": "Đang tải địa điểm du lịch...",
+    "error": "Không thể tải địa điểm du lịch.",
+    "empty": "Chưa tìm thấy địa điểm du lịch phù hợp.",
+    "addressUnavailable": "Chưa có địa chỉ",
+    "selectPlace": "Xem {name} trên bản đồ",
+    "distanceMeters": "{value} m",
+    "distanceKilometers": "{value} km",
+    "categoryLabels": {
+      "touristAttraction": "Điểm tham quan",
+      "museum": "Bảo tàng",
+      "beach": "Bãi biển",
+      "park": "Công viên",
+      "viewpoint": "Điểm ngắm cảnh",
+      "historicSite": "Di tích lịch sử",
+      "nature": "Thiên nhiên"
+    }
+  },
+  "Weather": {
+    "title": "Thời tiết",
+    "description": "Dự báo thời tiết theo tọa độ khu vực đã chọn.",
+    "current": "Thời tiết hiện tại",
+    "forecast": "Dự báo 3 ngày",
+    "humidity": "Độ ẩm",
+    "wind": "Gió",
+    "feelsLike": "Cảm giác như",
+    "sunrise": "Bình minh",
+    "sunset": "Hoàng hôn",
+    "rain": "Khả năng mưa",
+    "loading": "Đang tải thời tiết...",
+    "error": "Không thể tải thời tiết.",
+    "conditions": {
+      "clearSky": "Trời quang",
+      "mainlyClear": "Ít mây",
+      "partlyCloudy": "Có mây nhẹ",
+      "overcast": "Nhiều mây",
+      "fog": "Sương mù",
+      "drizzle": "Mưa phùn",
+      "rain": "Mưa",
+      "snow": "Tuyết",
+      "rainShowers": "Mưa rào",
+      "thunderstorm": "Dông",
+      "unknown": "Không xác định"
+    },
+    "temperatureValue": "{value}°C",
+    "temperatureRange": "{max}° / {min}°",
+    "percentValue": "{value}%",
+    "windSpeedValue": "{value} km/h"
+  },
+  "Cost": {
+    "title": "Chi phí ước tính",
+    "description": "Ước tính chi phí theo ngân sách và hoạt động trong chuyến đi.",
+    "total": "Tổng cộng",
+    "items": {
+      "Food": "Ăn uống",
+      "Transport": "Di chuyển",
+      "Tickets": "Vé tham quan",
+      "Coffee": "Cà phê",
+      "CoffeeExtra": "Cà phê & phát sinh"
+    }
+  },
+  "Loading": {
+    "ariaLabel": "Đang tạo lịch trình"
+  },
+  "EmptyState": {
+    "ariaLabel": "Khu vực lịch trình",
+    "eyebrow": "Sẵn sàng khi bạn muốn",
+    "title": "Lịch trình của bạn sẽ xuất hiện tại đây",
+    "description": "Chọn các thông tin chính để tạo kế hoạch gồm điểm dừng từng ngày, thời tiết, địa điểm và chi phí ước tính."
+  },
+  "Map": {
+    "eyebrow": "Tuyến đi trực quan",
+    "title": "Bản đồ lịch trình",
+    "description": "Hiển thị {count} địa điểm gợi ý gần khu vực đã chọn.",
+    "loading": "Đang tải bản đồ lịch trình",
+    "locationLoading": "Đang xác định vị trí...",
+    "locationError": "Không thể xác định vị trí.",
+    "markerLabel": "Địa điểm",
+    "plannedDay": "Ngày {day}",
+    "categories": {
+      "Beach": "Biển",
+      "Nature": "Thiên nhiên",
+      "Bridge": "Cầu biểu tượng",
+      "Mountain": "Núi",
+      "Photo spot": "Điểm chụp ảnh",
+      "Culture": "Văn hóa",
+      "Market": "Chợ địa phương"
+    },
+    "locations": {
+      "myKheBeach": {
+        "description": "Bãi biển thoáng rộng để bắt đầu chuyến đi với nắng, gió biển và nhịp thư giãn."
+      },
+      "sonTraPeninsula": {
+        "description": "Cung đường xanh nhìn ra biển, lý tưởng cho thiên nhiên và những khung hình rộng."
+      },
+      "dragonBridge": {
+        "description": "Biểu tượng trung tâm thành phố, đẹp nhất khi lên đèn bên sông Hàn."
+      },
+      "baNaHills": {
+        "description": "Điểm đến trên cao với khí hậu mát, cảnh núi và nhiều trải nghiệm trong ngày."
+      },
+      "goldenBridge": {
+        "description": "Cây cầu nổi tiếng với khung cảnh núi rừng, phù hợp cho ảnh kỷ niệm."
+      },
+      "marbleMountains": {
+        "description": "Quần thể núi đá, hang động và chùa chiền cho nửa ngày khám phá văn hóa."
+      },
+      "hanMarket": {
+        "description": "Khu chợ địa phương nhộn nhịp để mua quà, thử món nhẹ và cảm nhận đời sống Đà Nẵng."
+      }
+    },
+    "selectedMarkerLabel": "Địa điểm đang chọn"
+  },
+  "Planner": {
+    "summaryTitle": "Tổng quan lịch trình",
+    "warningsTitle": "Lưu ý cho chuyến đi",
+    "generatedFromRealData": "Lịch trình đã sẵn sàng.",
+    "fallbackNotice": "Lịch trình linh hoạt theo thông tin hiện có.",
+    "day": "Ngày",
+    "summary": {
+      "realData": "Lịch trình {days} ngày tại {destination} được sắp xếp theo địa điểm gần khu vực, sở thích đã chọn và thời tiết hiện có.",
+      "basicData": "Lịch trình {days} ngày tại {destination} dùng gợi ý linh hoạt vì địa điểm phù hợp chưa sẵn sàng."
+    },
+    "warnings": {
+      "placesFallback": "Chưa có địa điểm phù hợp, nên lịch trình ưu tiên hoạt động linh hoạt.",
+      "weatherFallback": "Thời tiết chưa sẵn sàng, hãy kiểm tra lại trước khi khởi hành.",
+      "rain": "Có khả năng mưa trong một số ngày, nên chuẩn bị phương án trong nhà hoặc quán cà phê.",
+      "hot": "Một số khung giờ có thể khá nóng, nên ưu tiên nghỉ giữa ngày và mang đủ nước.",
+      "goodWeather": "Có ngày thời tiết thuận lợi cho hoạt động ngoài trời và điểm ngắm cảnh."
+    },
+    "timeOfDay": {
+      "morning": "Buổi sáng",
+      "lunch": "Bữa trưa",
+      "afternoon": "Buổi chiều",
+      "evening": "Buổi tối"
+    },
+    "dayTitles": {
+      "1": "Khởi động chuyến đi",
+      "2": "Khám phá nhịp địa phương",
+      "3": "Điểm nổi bật và trải nghiệm chậm",
+      "4": "Không gian thiên nhiên và văn hóa",
+      "5": "Ngày cuối nhẹ nhàng"
+    },
+    "activityTitles": {
+      "localFood": "Thưởng thức món địa phương",
+      "lunchBreak": "Nghỉ trưa linh hoạt",
+      "nightMarket": "Dạo chợ đêm",
+      "coffeeBreak": "Nghỉ cà phê",
+      "slowStart": "Bắt đầu nhẹ nhàng",
+      "riversideWalk": "Dạo phố thư giãn"
+    },
+    "activityDescriptions": {
+      "explorePlace": "Khám phá {place} theo nhịp thoải mái và dành thời gian quan sát khu vực xung quanh.",
+      "localFood": "Dành thời gian thử món địa phương phù hợp với ngân sách và lịch trình trong ngày.",
+      "lunchBreak": "Nghỉ ăn trưa gần khu vực đang tham quan để giữ nhịp di chuyển nhẹ nhàng.",
+      "nightMarket": "Kết thúc ngày bằng không khí địa phương, món ăn nhẹ và mua sắm nhỏ.",
+      "coffeeBreak": "Chọn một quán cà phê gần điểm tham quan để nghỉ chân và xem lại kế hoạch.",
+      "slowStart": "Bắt đầu ngày với bữa sáng, chuẩn bị đồ dùng và di chuyển không quá gấp.",
+      "riversideWalk": "Dành buổi tối để đi bộ nhẹ, chụp ảnh và cảm nhận nhịp thành phố."
+    },
+    "aiEnhanced": "Tối ưu bởi AI",
+    "basicItinerary": "Lịch trình cơ bản",
+    "aiLoading": "AI đang tối ưu lịch trình..."
+  }
+}
