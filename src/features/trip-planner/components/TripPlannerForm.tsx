@@ -1,5 +1,7 @@
 "use client";
 
+/* eslint-disable react-hooks/set-state-in-effect -- This form coordinates async geocoding, places, weather, and AI generation state. */
+
 import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
 import {
   CalendarDays,
@@ -34,6 +36,11 @@ import { LoadingState } from "./LoadingState";
 import styles from "./TripPlanner.module.scss";
 
 type FormErrors = Partial<Record<keyof PlannerFormValues, string>>;
+
+type GeneratedTripContext = {
+  province?: string;
+  touristArea?: string;
+};
 
 const fallbackDestinationOptions: ProvinceOption[] = destinations.map((destination) => ({
   code: destination,
@@ -107,6 +114,7 @@ export function TripPlannerForm() {
   const [isLoading, setIsLoading] = useState(false);
   const [pendingValues, setPendingValues] = useState<PlannerFormValues | null>(null);
   const [result, setResult] = useState<GeneratedItinerary | null>(null);
+  const [generatedTripContext, setGeneratedTripContext] = useState<GeneratedTripContext | null>(null);
   const [aiSource, setAiSource] = useState<AiPlannerSource | "loading" | null>(null);
   const aiRequestIdRef = useRef(0);
 
@@ -180,6 +188,10 @@ export function TripPlannerForm() {
       weather: isWeatherError ? null : weather,
     };
     const nextResult = generateItinerary(plannerInput);
+    const nextGeneratedTripContext: GeneratedTripContext = {
+      province: pendingValues.province,
+      touristArea: pendingTouristArea.name,
+    };
 
     const aiRequestId = aiRequestIdRef.current + 1;
     aiRequestIdRef.current = aiRequestId;
@@ -205,6 +217,7 @@ export function TripPlannerForm() {
         }
 
         setResult(response.itinerary);
+        setGeneratedTripContext(nextGeneratedTripContext);
         setAiSource(response.source);
         setIsLoading(false);
       })
@@ -214,6 +227,7 @@ export function TripPlannerForm() {
         }
 
         setResult(nextResult);
+        setGeneratedTripContext(nextGeneratedTripContext);
         setAiSource("fallback");
         setIsLoading(false);
       });
@@ -280,6 +294,7 @@ export function TripPlannerForm() {
       setPendingValues(null);
       aiRequestIdRef.current += 1;
       setResult(null);
+      setGeneratedTripContext(null);
       setAiSource(null);
       setIsLoading(false);
       return;
@@ -288,6 +303,7 @@ export function TripPlannerForm() {
     aiRequestIdRef.current += 1;
     setIsLoading(true);
     setResult(null);
+    setGeneratedTripContext(null);
     setAiSource(null);
     setPendingValues({ ...values });
   }
@@ -499,6 +515,8 @@ export function TripPlannerForm() {
               isWeatherLoading={isWeatherLoading}
               mapCenter={resolvedMapCenter}
               places={isPlacesError ? [] : places}
+              province={generatedTripContext?.province}
+              touristArea={generatedTripContext?.touristArea}
               trip={result}
               weather={isWeatherError ? null : weather}
             />
@@ -509,4 +527,7 @@ export function TripPlannerForm() {
     </section>
   );
 }
+
+
+
 

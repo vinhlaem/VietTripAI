@@ -1,17 +1,15 @@
 "use client";
 
-import Image from "next/image";
 import {
-  ArrowDown,
   CalendarDays,
   Languages,
+  LockKeyhole,
   LogIn,
   LogOut,
-  MapPin,
   PlaneTakeoff,
+  RefreshCw,
   Sparkles,
   UserCircle,
-  WalletCards,
   X,
 } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
@@ -19,7 +17,11 @@ import { useEffect, useState } from "react";
 import { AuthButton } from "@/features/auth/components/AuthButton";
 import { useAuth } from "@/features/auth/hooks/useAuth";
 import { Link, usePathname } from "@/i18n/navigation";
-import styles from "./TripPlanner.module.scss";
+import { useUserTrips } from "../hooks/useUserTrips";
+import { TripCard } from "./TripCard";
+import { TripsEmptyState } from "./TripsEmptyState";
+import { TripsLoadingState } from "./TripsLoadingState";
+import styles from "./MyTrips.module.scss";
 
 const languageOptions = [
   { labelKey: "vietnamese", locale: "vi" },
@@ -34,17 +36,23 @@ function getUserLabel(
   return displayName || email || fallback;
 }
 
-export function HeroSection() {
+export function MyTripsPage() {
   const locale = useLocale();
   const pathname = usePathname();
   const common = useTranslations("Common");
   const hero = useTranslations("Hero");
-  const trips = useTranslations("Trips");
+  const tripsText = useTranslations("Trips");
   const auth = useTranslations("Auth");
-  const { isAuthenticated, isLoading, signInWithGoogle, signOut, user } =
-    useAuth();
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const {
+    isAuthenticated,
+    isLoading: isAuthLoading,
+    signInWithGoogle,
+    signOut,
+    user,
+  } = useAuth();
+  const { trips, isLoading, isError, refetch } = useUserTrips();
   const [isAuthBusy, setIsAuthBusy] = useState(false);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const userLabel = getUserLabel(
     user?.displayName ?? null,
     user?.email ?? null,
@@ -84,6 +92,7 @@ export function HeroSection() {
 
     try {
       await signOut();
+      setIsDrawerOpen(false);
     } catch {
       // Keep auth failures local until a dedicated notification surface exists.
     } finally {
@@ -91,33 +100,92 @@ export function HeroSection() {
     }
   }
 
-  return (
-    <section className={styles.hero} aria-labelledby="hero-title">
-      <Image
-        className={styles.heroImage}
-        src="/vietnam-hero.png"
-        alt={hero("imageAlt")}
-        fill
-        sizes="100vw"
-        priority
-      />
-      <div className={styles.heroOverlay} />
+  let content;
 
-      <nav className={styles.nav} aria-label={common("navLabel")}>
+  if (isAuthLoading || isLoading) {
+    content = <TripsLoadingState />;
+  } else if (!isAuthenticated) {
+    content = (
+      <section
+        className={styles.signInState}
+        aria-labelledby="my-trips-sign-in-title"
+      >
+        <span className={styles.stateIcon} aria-hidden="true">
+          <LockKeyhole size={26} />
+        </span>
+        <div>
+          <h2 id="my-trips-sign-in-title">{tripsText("myTripsTitle")}</h2>
+          <p>{tripsText("signInToViewTrips")}</p>
+        </div>
+        <button
+          className={styles.primaryAction}
+          type="button"
+          onClick={handleSignIn}
+          disabled={isAuthBusy}
+        >
+          {auth("signIn")}
+        </button>
+      </section>
+    );
+  } else if (isError) {
+    content = (
+      <section
+        className={styles.signInState}
+        aria-labelledby="my-trips-error-title"
+      >
+        <span className={styles.stateIcon} aria-hidden="true">
+          <RefreshCw size={26} />
+        </span>
+        <div>
+          <h2 id="my-trips-error-title">{tripsText("loadErrorTitle")}</h2>
+          <p>{tripsText("loadErrorDescription")}</p>
+        </div>
+        <button
+          className={styles.primaryAction}
+          type="button"
+          onClick={refetch}
+        >
+          {tripsText("tryAgain")}
+        </button>
+      </section>
+    );
+  } else if (trips.length === 0) {
+    content = <TripsEmptyState />;
+  } else {
+    content = (
+      <section
+        className={styles.tripGrid}
+        aria-label={tripsText("myTripsTitle")}
+      >
+        {trips.map((trip) => (
+          <TripCard trip={trip} key={trip.id} />
+        ))}
+      </section>
+    );
+  }
+
+  return (
+    <main className={styles.myTripsPage}>
+      <header className={styles.topNav}>
         <Link className={styles.brand} href="/" aria-label={common("homeAria")}>
           <span className={styles.brandMark}>
             <PlaneTakeoff size={18} aria-hidden="true" />
           </span>
           {common("brand")}
         </Link>
-        <div className={styles.navControls}>
-          <Link className={styles.navLink} href="/my-trips">
+
+        <nav className={styles.navControls} aria-label={common("navLabel")}>
+          <Link
+            className={`${styles.navLink} ${styles.navLinkActive}`}
+            href="/my-trips"
+            aria-current="page"
+          >
             <CalendarDays size={16} aria-hidden="true" />
-            {trips("myTrips")}
+            {tripsText("myTrips")}
           </Link>
-          <a className={styles.navAction} href="#trip-planner">
+          <Link className={styles.navLink} href="/">
             {hero("navAction")}
-          </a>
+          </Link>
           <div
             className={styles.languageSwitcher}
             aria-label={common("languageLabel")}
@@ -140,7 +208,7 @@ export function HeroSection() {
             ))}
           </div>
           <AuthButton />
-        </div>
+        </nav>
 
         <button
           className={styles.mobileMenuButton}
@@ -165,7 +233,7 @@ export function HeroSection() {
             )}
           </span>
         </button>
-      </nav>
+      </header>
 
       {isDrawerOpen ? (
         <div className={styles.mobileDrawerOverlay}>
@@ -207,16 +275,16 @@ export function HeroSection() {
                 onClick={() => setIsDrawerOpen(false)}
               >
                 <CalendarDays size={17} aria-hidden="true" />
-                {trips("myTrips")}
+                {tripsText("myTrips")}
               </Link>
-              <a
+              <Link
                 className={styles.drawerNavLink}
-                href="#trip-planner"
+                href="/"
                 onClick={() => setIsDrawerOpen(false)}
               >
                 <Sparkles size={17} aria-hidden="true" />
                 {hero("navAction")}
-              </a>
+              </Link>
             </div>
 
             <div className={styles.drawerSection}>
@@ -253,7 +321,7 @@ export function HeroSection() {
               <span className={styles.drawerSectionLabel}>
                 {isAuthenticated ? auth("signedInAs") : auth("signIn")}
               </span>
-              {isLoading ? (
+              {isAuthLoading ? (
                 <button
                   className={styles.drawerAuthButton}
                   type="button"
@@ -308,48 +376,13 @@ export function HeroSection() {
         </div>
       ) : null}
 
-      <div className={styles.heroContent}>
-        <div className={styles.heroCopy}>
-          <span className={styles.eyebrow}>
-            <Sparkles size={16} aria-hidden="true" />
-            {hero("eyebrow")}
-          </span>
-          <h1 id="hero-title">{hero("title")}</h1>
-          <p>{hero("subtitle")}</p>
-          <div className={styles.heroActions}>
-            <a className={styles.primaryButton} href="#trip-planner">
-              <span>{hero("cta")}</span>
-              <ArrowDown size={18} aria-hidden="true" />
-            </a>
-            <div className={styles.trustLine}>
-              <span>{common("tripSnapshot")}</span>
-              <span aria-hidden="true">·</span>
-              <span>{common("noSignup")}</span>
-            </div>
-          </div>
-        </div>
+      <section className={styles.heroPanel}>
+        <span>{tripsText("myTrips")}</span>
+        <h1>{tripsText("myTripsTitle")}</h1>
+        <p>{tripsText("myTripsSubtitle")}</p>
+      </section>
 
-        <div className={styles.heroPreview} aria-label={hero("previewAria")}>
-          <div className={styles.previewHeader}>
-            <span>{hero("previewTitle")}</span>
-            <strong>{hero("previewDays")}</strong>
-          </div>
-          <div className={styles.previewGrid}>
-            <span>
-              <MapPin size={17} aria-hidden="true" />
-              Mỹ Khê
-            </span>
-            <span>
-              <CalendarDays size={17} aria-hidden="true" />
-              Golden Bridge
-            </span>
-            <span>
-              <WalletCards size={17} aria-hidden="true" />
-              {hero("previewBudget")}
-            </span>
-          </div>
-        </div>
-      </div>
-    </section>
+      {content}
+    </main>
   );
 }

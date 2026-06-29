@@ -5,10 +5,12 @@ import dynamic from "next/dynamic";
 import { CalendarCheck2, Sparkles } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { SuggestedPlaces } from "@/features/places/components/SuggestedPlaces";
+import { SaveTripButton } from "@/features/trips/components/SaveTripButton";
 import type { NormalizedPlace } from "@/features/places/types";
 import type { AiPlannerSource } from "@/features/ai-planner/types";
 import type { GeneratedItinerary } from "@/features/planner/types";
 import type { NormalizedWeather } from "@/features/weather/types";
+import type { SaveTripInput } from "@/features/trips/types";
 import { WeatherForecast } from "@/features/weather/components/WeatherForecast";
 import type { MapCenter } from "@/features/map/types";
 import { CostBreakdown } from "./CostBreakdown";
@@ -30,6 +32,8 @@ type ItineraryResultProps = {
   isWeatherLoading?: boolean;
   mapCenter?: MapCenter | null;
   places: NormalizedPlace[];
+  province?: string;
+  touristArea?: string;
   trip: GeneratedItinerary;
   weather: NormalizedWeather | null;
 };
@@ -52,6 +56,8 @@ export function ItineraryResult({
   isWeatherLoading = false,
   mapCenter,
   places,
+  province,
+  touristArea,
   trip,
   weather,
 }: ItineraryResultProps) {
@@ -67,6 +73,18 @@ export function ItineraryResult({
     : aiSource === "ai-enhanced"
       ? planner("aiEnhanced")
       : planner("basicItinerary");
+  const saveTripInput: SaveTripInput = {
+    destination: trip.destination,
+    ...(province ? { province } : {}),
+    ...(touristArea ? { touristArea } : {}),
+    days: trip.days,
+    budget: trip.budget,
+    interests: trip.interests,
+    itinerary: trip,
+    places,
+    weather,
+    ...(aiSource === "ai-enhanced" || aiSource === "fallback" ? { aiSource } : {}),
+  };
 
   const handleSelectPlace = useCallback((place: NormalizedPlace) => {
     setSelectedPlaceId(place.id);
@@ -88,6 +106,7 @@ export function ItineraryResult({
           </div>
           <div className={styles.resultHeroAside}>
             <span className={styles.aiBadge}>{aiStatusLabel}</span>
+            <SaveTripButton trip={saveTripInput} />
             <CalendarCheck2 size={28} aria-hidden="true" />
           </div>
         </div>
@@ -155,5 +174,9 @@ export function ItineraryResult({
     </section>
   );
 }
+
+
+
+
 
 

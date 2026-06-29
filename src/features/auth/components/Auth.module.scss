@@ -1,0 +1,389 @@
+.authButton,
+.account,
+.signOutButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 999px;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.14);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(18px);
+}
+
+.authButton,
+.signOutButton {
+  min-height: 44px;
+  gap: 0.5rem;
+  padding: 0 0.95rem;
+  font-size: 0.84rem;
+  font-weight: 780;
+  transition:
+    transform 180ms ease,
+    background 180ms ease,
+    box-shadow 180ms ease;
+
+  &:hover:not(:disabled) {
+    transform: translateY(-1px);
+    background: rgba(255, 255, 255, 0.22);
+  }
+
+  &:focus-visible {
+    outline: 3px solid rgba(255, 255, 255, 0.72);
+    outline-offset: 3px;
+  }
+
+  &:disabled {
+    cursor: wait;
+    opacity: 0.72;
+  }
+}
+
+.loadingButton {
+  min-width: 178px;
+  justify-content: flex-start;
+}
+
+.loadingDot {
+  width: 0.62rem;
+  height: 0.62rem;
+  border-radius: 999px;
+  background: #fff2dd;
+  box-shadow: 0 0 0 0 rgba(255, 242, 221, 0.58);
+  animation: pulse 1200ms ease-in-out infinite;
+}
+
+.account {
+  gap: 0.55rem;
+  min-height: 48px;
+  padding: 0.25rem 0.28rem 0.25rem 0.35rem;
+}
+
+.avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  overflow: hidden;
+  border-radius: 50%;
+  color: #073532;
+  background:
+    linear-gradient(135deg, #ffffff, #fff2dd), rgba(255, 255, 255, 0.2);
+  background-position: center;
+  background-size: cover;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+.identity {
+  display: grid;
+  min-width: 0;
+  max-width: 152px;
+  line-height: 1.05;
+
+  small,
+  strong {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  small {
+    color: rgba(255, 255, 255, 0.68);
+    font-size: 0.66rem;
+    font-weight: 720;
+  }
+
+  strong {
+    color: #ffffff;
+    font-size: 0.82rem;
+    font-weight: 820;
+  }
+}
+
+.signOutButton {
+  min-height: 36px;
+  padding: 0 0.72rem;
+  color: #073532;
+  background: linear-gradient(135deg, #ffffff, #fff2dd);
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 242, 221, 0.58);
+  }
+
+  50% {
+    box-shadow: 0 0 0 8px rgba(255, 242, 221, 0);
+  }
+}
+
+@media (max-width: 760px) {
+  .identity {
+    display: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .authButton,
+  .account {
+    width: 100%;
+  }
+}
+
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: grid;
+  place-items: start;
+  padding: 1rem;
+  background: rgba(7, 25, 25, 0.5);
+  backdrop-filter: blur(12px);
+}
+
+.authModal {
+  width: 100%;
+  display: grid;
+  gap: 0.95rem;
+  padding: 1.25rem;
+  border: 1px solid rgba(28, 76, 72, 0.14);
+  border-radius: 8px;
+  color: #172420;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.96),
+      rgba(239, 252, 248, 0.92)
+    ),
+    #ffffff;
+  box-shadow: 0 32px 90px rgba(8, 35, 34, 0.24);
+
+  h2,
+  p {
+    margin: 0;
+  }
+
+  h2 {
+    font-size: 1.35rem;
+    line-height: 1.15;
+    letter-spacing: 0;
+  }
+
+  p {
+    color: #64746f;
+    line-height: 1.65;
+  }
+}
+
+.modalIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  color: #0f766e;
+  background: linear-gradient(135deg, #dff8f3, #fff1df);
+  font-size: 1rem;
+  font-weight: 860;
+}
+
+.modalActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 0.2rem;
+}
+
+.googleButton,
+.cancelButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 1rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 780;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    background 180ms ease;
+
+  &:hover:not(:disabled) {
+    transform: translateY(-1px);
+  }
+
+  &:focus-visible {
+    outline: 3px solid rgba(15, 118, 110, 0.24);
+    outline-offset: 3px;
+  }
+
+  &:disabled {
+    cursor: wait;
+    opacity: 0.7;
+  }
+}
+
+.googleButton {
+  flex: 1 1 190px;
+  border: 0;
+  color: #ffffff;
+  background: linear-gradient(135deg, #0f766e, #125d72 52%, #ff7a59);
+  box-shadow: 0 16px 34px rgba(15, 118, 110, 0.22);
+}
+
+.cancelButton {
+  border: 1px solid rgba(28, 76, 72, 0.12);
+  color: #314b45;
+  background: rgba(255, 255, 255, 0.78);
+}
+
+.accountMenu {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatarButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  padding: 0.3rem;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 50%;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.14);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    0 12px 30px rgba(0, 0, 0, 0.12);
+  backdrop-filter: blur(18px);
+  transition:
+    transform 180ms ease,
+    background 180ms ease,
+    box-shadow 180ms ease;
+
+  &:hover {
+    transform: translateY(-1px);
+    background: rgba(255, 255, 255, 0.22);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.2),
+      0 16px 36px rgba(0, 0, 0, 0.16);
+  }
+
+  &:focus-visible {
+    outline: 3px solid rgba(255, 255, 255, 0.72);
+    outline-offset: 3px;
+  }
+}
+
+.avatarButton .avatar {
+  width: 36px;
+  height: 36px;
+  color: #ffffff;
+  // background:
+  //   linear-gradient(135deg, #ff7a59, #0f766e), rgba(255, 255, 255, 0.2);
+  font-weight: 860;
+}
+
+.accountPopover {
+  position: absolute;
+  top: calc(100% + 0.65rem);
+  right: 0;
+  z-index: 30;
+  width: 240px;
+  display: grid;
+  gap: 0.7rem;
+  padding: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 8px;
+  color: #ffffff;
+  background:
+    linear-gradient(135deg, rgba(21, 64, 60, 0.96), rgba(40, 75, 71, 0.92)),
+    rgba(8, 35, 34, 0.92);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(20px) saturate(140%);
+  animation: accountPopoverIn 160ms ease-out;
+}
+
+.popoverIdentity {
+  display: grid;
+  gap: 0.2rem;
+  min-width: 0;
+  padding: 0.2rem 0.2rem 0;
+
+  small,
+  strong {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  small {
+    color: rgba(255, 255, 255, 0.66);
+    font-size: 0.7rem;
+    font-weight: 740;
+  }
+
+  strong {
+    color: #ffffff;
+    font-size: 0.92rem;
+    font-weight: 840;
+  }
+}
+
+.popoverSignOutButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 42px;
+  padding: 0 0.85rem;
+  border: 0;
+  border-radius: 999px;
+  color: #073532;
+  background: linear-gradient(135deg, #ffffff, #fff2dd);
+  font-size: 0.84rem;
+  font-weight: 820;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    opacity 180ms ease;
+
+  &:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 12px 26px rgba(0, 0, 0, 0.18);
+  }
+
+  &:focus-visible {
+    outline: 3px solid rgba(255, 255, 255, 0.72);
+    outline-offset: 3px;
+  }
+
+  &:disabled {
+    cursor: wait;
+    opacity: 0.72;
+  }
+}
+
+@keyframes accountPopoverIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.accountPopover {
+  z-index: 90;
+}

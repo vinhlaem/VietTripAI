@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 import { routing } from "@/i18n/routing";
 import { buildLocaleMetadata, type AppLocale } from "@/lib/seo";
+import { Providers } from "./providers";
 import "../globals.css";
 import "leaflet/dist/leaflet.css";
 
@@ -49,11 +50,15 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   return (
     <html lang={locale}>
       <body>
-        <NextIntlClientProvider>{children}</NextIntlClientProvider>
+        <NextIntlClientProvider>
+          <Providers>{children}</Providers>
+        </NextIntlClientProvider>
       </body>
     </html>
   );
 }
+
+
 
 
 

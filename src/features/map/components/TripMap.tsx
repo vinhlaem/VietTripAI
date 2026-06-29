@@ -138,7 +138,7 @@ export function TripMap({
           <MapContainer
             center={[initialCenter.latitude, initialCenter.longitude]}
             className={styles.mapCanvas}
-            scrollWheelZoom={false}
+            scrollWheelZoom
             touchZoom
             zoom={11}
             zoomControl={false}
@@ -179,3 +179,4 @@ export function TripMap({
     </section>
   );
 }
+

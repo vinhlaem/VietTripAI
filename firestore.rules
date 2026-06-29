@@ -1,0 +1,51 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isOwner(userId) {
+      return request.auth != null && request.auth.uid == userId;
+    }
+
+    function tripPath(userId, tripId) {
+      return /databases/$(database)/documents/users/$(userId)/trips/$(tripId);
+    }
+
+    function sharePath(slug) {
+      return /databases/$(database)/documents/shareTrips/$(slug);
+    }
+
+    function isPublicSharedTrip(userId, tripId) {
+      return resource.data.share.enabled == true
+        && resource.data.share.slug is string
+        && exists(sharePath(resource.data.share.slug))
+        && get(sharePath(resource.data.share.slug)).data.userId == userId
+        && get(sharePath(resource.data.share.slug)).data.tripId == tripId;
+    }
+
+    function isValidShareMapping() {
+      return request.auth != null
+        && request.resource.data.keys().hasOnly(['userId', 'tripId', 'createdAt'])
+        && request.resource.data.userId == request.auth.uid
+        && request.resource.data.tripId is string
+        && request.resource.data.createdAt is string
+        && exists(tripPath(request.auth.uid, request.resource.data.tripId));
+    }
+
+    match /users/{userId}/trips/{tripId} {
+      allow read: if isOwner(userId) || isPublicSharedTrip(userId, tripId);
+      allow create, update, delete: if isOwner(userId);
+    }
+
+    match /shareTrips/{slug} {
+      allow read: if true;
+      allow create: if isValidShareMapping();
+      allow update: if false;
+      allow delete: if request.auth != null && resource.data.userId == request.auth.uid;
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
+
