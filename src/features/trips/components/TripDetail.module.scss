@@ -118,8 +118,8 @@
   align-items: center;
   gap: 0.4rem;
   width: fit-content;
-  min-height: 34px;
-  padding: 0 0.8rem;
+  height: 42px;
+  padding: 0 1rem;
   border: 1px solid rgba(15, 118, 110, 0.12);
   border-radius: 999px;
   color: #0b4c47;
@@ -449,7 +449,7 @@
 .headerAside {
   display: flex;
   flex-wrap: wrap;
-  align-items: flex-start;
+  align-items: center;
   justify-content: flex-end;
   gap: 0.7rem;
 }
@@ -532,3 +532,5 @@
     grid-template-columns: 1fr;
   }
 }
+
+
