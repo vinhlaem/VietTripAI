@@ -5,7 +5,19 @@ export type PlaceCategory =
   | "park"
   | "viewpoint"
   | "historicSite"
-  | "nature";
+  | "nature"
+  | "hotel"
+  | "hostel"
+  | "guestHouse"
+  | "restaurant"
+  | "cafe"
+  | "fastFood"
+  | "entertainment"
+  | "nightlife";
+
+export type PlaceGroup = "attraction" | "hotel" | "food" | "entertainment";
+
+export type PlacesQueryGroup = PlaceGroup | "recommendation";
 
 export type PlaceSource = "geoapify";
 
@@ -16,8 +28,11 @@ export interface Place {
   longitude: number;
   address?: string;
   category: PlaceCategory;
+  group: PlaceGroup;
+  sourceCategories?: string[];
   distance?: number;
   image?: string;
+  openingHours?: string;
   source: PlaceSource;
 }
 
@@ -33,6 +48,7 @@ export interface GeoapifyPlaceProperties {
   address_line2?: string;
   categories?: string[];
   distance?: number;
+  opening_hours?: string;
 }
 
 export interface GeoapifyPlaceFeature {

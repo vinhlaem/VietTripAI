@@ -48,9 +48,25 @@ export function getMaxPlacesPerDay(days: number) {
   return 2;
 }
 
+function normalizeInterest(interest: string) {
+  const aliases: Record<string, string> = { beach: "Beach", coffee: "Coffee", "local-food": "Local food", culture: "Culture", nature: "Nature", photography: "Photography", "night-market": "Night market", family: "Family friendly" };
+  const value = interest.startsWith("local:") ? interest.split(":")[1] : interest;
+  if (aliases[value]) return aliases[value];
+  const text = value.toLocaleLowerCase("vi");
+  if (/biển|bãi biển|beach|sea|đảo|island/.test(text)) return "Beach";
+  if (/cà phê|coffee|cafe/.test(text)) return "Coffee";
+  if (/ẩm thực|món ăn|đặc sản|hải sản|food|cuisine|seafood/.test(text)) return "Local food";
+  if (/văn hóa|di sản|lịch sử|culture|heritage|history|kiến trúc/.test(text)) return "Culture";
+  if (/thiên nhiên|cảnh quan|nature|scenery|núi|sinh thái/.test(text)) return "Nature";
+  if (/chụp ảnh|check-in|photo|photography/.test(text)) return "Photography";
+  if (/chợ đêm|phố đi bộ|night market/.test(text)) return "Night market";
+  if (/gia đình|trẻ em|family|kids/.test(text)) return "Family friendly";
+  return value;
+}
+
 export function getPlaceInterestScore(place: Place, interests: string[]) {
   const interestScore = interests.reduce((score, interest) => {
-    return score + (interestCategoryWeights[interest]?.[place.category] ?? 0);
+    return score + (interestCategoryWeights[normalizeInterest(interest)]?.[place.category] ?? 0);
   }, 0);
   const distanceScore = place.distance == null ? 0 : Math.max(0, 3 - place.distance / 5000);
 
@@ -72,13 +88,13 @@ export function sortPlacesForPlanner(places: Place[], interests: string[]) {
 }
 
 export function prefersLocalFood(interests: string[]) {
-  return interests.includes("Local food");
+  return interests.map(normalizeInterest).includes("Local food");
 }
 
 export function prefersCoffee(interests: string[]) {
-  return interests.includes("Coffee");
+  return interests.map(normalizeInterest).includes("Coffee");
 }
 
 export function prefersNightMarket(interests: string[]) {
-  return interests.includes("Night market");
+  return interests.map(normalizeInterest).includes("Night market");
 }

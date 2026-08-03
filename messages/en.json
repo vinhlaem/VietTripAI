@@ -113,7 +113,34 @@
     "touristAreaLabel": "Travel area/place",
     "touristAreaPlaceholder": "Choose a travel area",
     "touristAreaHelper": "Some provinces are broad, choose a specific travel area for a more accurate itinerary.",
-    "touristAreaFallback": "No curated travel areas found, the selected province/city will be used."
+    "touristAreaFallback": "No curated travel areas found, the selected province/city will be used.",
+    "checkOut": "Check-out",
+    "guests": "Guests",
+    "checkIn": "Check-in",
+    "interestsAi": "AI-generated suggestions for {area}, based on destination knowledge and your trip profile.",
+    "interestsAiLoading": "AI is generating interests for {area}...",
+    "interestsDynamic": "Suggestions for {area}, based on local characteristics, nearby places, and your trip profile.",
+    "interestsFallback": "Popular interests are shown because local data is not ready.",
+    "travelParty": "Who are you travelling with?",
+    "pace": "Trip pace",
+    "accessibility": "Mobility",
+    "hotelBudgetPercent": "Accommodation budget (%)",
+    "indoorPreference": "Prefer indoor activities",
+    "travelPartyOptions": {
+      "solo": "Solo",
+      "couple": "Couple",
+      "family": "Family",
+      "friends": "Friends"
+    },
+    "paceOptions": {
+      "relaxed": "Relaxed",
+      "balanced": "Balanced",
+      "active": "Active"
+    },
+    "accessibilityOptions": {
+      "standard": "Standard mobility",
+      "limitedMobility": "Limited mobility"
+    }
   },
   "Interests": {
     "ariaLabel": "Travel interests",
@@ -124,13 +151,18 @@
     "Nature": "Nature",
     "Photography": "Photography",
     "Night market": "Night market",
-    "Family friendly": "Family friendly"
+    "Family friendly": "Family friendly",
+    "Stay": "Stay",
+    "Entertainment": "Entertainment"
   },
   "Validation": {
     "destination": "Choose a province/city.",
     "days": "Choose travel days.",
     "budget": "Choose a budget.",
-    "interests": "Pick at least one interest."
+    "interests": "Pick at least one interest.",
+    "checkOut": "Check-out must be after check-in.",
+    "guests": "Guests must be at least 1.",
+    "checkIn": "Choose a check-in date."
   },
   "Result": {
     "eyebrow": "Smart itinerary",
@@ -184,8 +216,17 @@
       "park": "Park",
       "viewpoint": "Viewpoint",
       "historicSite": "Historic site",
-      "nature": "Nature"
-    }
+      "nature": "Nature",
+      "entertainment": "Entertainment",
+      "fastFood": "Fast food",
+      "guestHouse": "Guest house",
+      "nightlife": "Nightlife",
+      "restaurant": "Restaurant",
+      "cafe": "Cafe",
+      "hotel": "Hotel",
+      "hostel": "Hostel"
+    },
+    "openingHours": "Opening hours: {value}"
   },
   "Weather": {
     "title": "Weather",
@@ -227,7 +268,8 @@
       "Transport": "Transport",
       "Tickets": "Tickets",
       "Coffee": "Coffee",
-      "CoffeeExtra": "Coffee & extra"
+      "CoffeeExtra": "Coffee & extra",
+      "Accommodation": "Accommodation"
     }
   },
   "Loading": {
@@ -327,11 +369,76 @@
       "nightMarket": "Close the day with local atmosphere, snacks, and small finds.",
       "coffeeBreak": "Pick a nearby cafe to rest and review the next stops.",
       "slowStart": "Begin with breakfast, essentials, and an unhurried transfer.",
-      "riversideWalk": "Spend the evening walking, taking photos, and enjoying the city pace."
+      "riversideWalk": "Spend the evening walking, taking photos, and enjoying the city pace.",
+      "custom": "A custom activity added to your itinerary."
     },
     "aiEnhanced": "AI enhanced",
     "basicItinerary": "Basic itinerary",
-    "aiLoading": "AI is optimizing your itinerary..."
+    "aiLoading": "AI is optimizing your itinerary...",
+    "minutes": "min",
+    "travelFromPrevious": "{distance} km · about {minutes} min from previous stop",
+    "environment": {
+      "indoor": "Indoor",
+      "outdoor": "Outdoor",
+      "mixed": "Indoor/outdoor"
+    },
+    "accessibility": {
+      "easy": "Easy access",
+      "moderate": "Moderate mobility"
+    },
+    "actions": {
+      "add": "Add activity",
+      "regenerate": "Regenerate day",
+      "edit": "Edit",
+      "remove": "Remove",
+      "addPrompt": "Enter a new activity",
+      "editPrompt": "Edit activity name",
+      "activityName": "Activity name",
+      "cancel": "Cancel",
+      "save": "Save changes"
+    },
+    "rainPlan": "Rain plan: prioritize museums, covered heritage sites, cafes, or indoor activities near the route.",
+    "dailyRecommendations": {
+      "food": "Food near the route",
+      "entertainment": "Evening entertainment"
+    }
+  },
+  "Recommendations": {
+    "title": "Nearby recommendations",
+    "description": "Real options near the selected area, prioritized by your interests and distance.",
+    "groups": {
+      "hotels": "Places to stay",
+      "food": "Food & drinks",
+      "entertainment": "Entertainment"
+    },
+    "groupDescriptions": {
+      "hotels": "Accommodation near the center of your trip.",
+      "food": "Convenient restaurants and cafes nearby.",
+      "entertainment": "Leisure and entertainment options in the area."
+    },
+    "checkPrice": "Check room prices",
+    "checkPriceBooking": "Search Booking",
+    "checkPriceGoogle": "Search Google Hotels"
+  },
+  "TripTools": {
+    "title": "Trip tools",
+    "perPerson": "About {value} VND/person",
+    "favorite": "Favorite",
+    "calendar": "Add to calendar",
+    "print": "Print / Save PDF",
+    "packingTitle": "Packing checklist",
+    "feedbackTitle": "Does this itinerary fit?",
+    "feedbackDescription": "Feedback is saved for this session.",
+    "useful": "Useful",
+    "notUseful": "Needs work",
+    "packing": {
+      "identification": "Identification documents",
+      "charger": "Phone charger and power bank",
+      "water": "Reusable water bottle",
+      "rain": "Umbrella or raincoat",
+      "beach": "Swimwear and sunscreen",
+      "outdoor": "Walking shoes and sun protection"
+    },
+    "hotelBudget": "About {value} VND for accommodation"
   }
 }
-

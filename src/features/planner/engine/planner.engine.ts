@@ -32,6 +32,12 @@ function createPlaceActivity(
     description: place.address ?? "activityDescriptions.explorePlace",
     descriptionKey: place.address ? undefined : "activityDescriptions.explorePlace",
     estimatedCost: place.category === "museum" || place.category === "touristAttraction" ? 180000 : 80000,
+    latitude: place.latitude,
+    longitude: place.longitude,
+    startTime: ({ morning: "08:00", lunch: "12:00", afternoon: "14:30", evening: "18:30" } as const)[timeOfDay],
+    durationMinutes: timeOfDay === "evening" ? 120 : 150,
+    environment: place.category === "museum" || place.category === "historicSite" ? "indoor" : place.category === "touristAttraction" ? "mixed" : "outdoor",
+    accessibility: place.category === "nature" || place.category === "viewpoint" ? "moderate" : "easy",
   };
 }
 
@@ -115,6 +121,7 @@ function createDayPlan(
     title: `dayTitles.${Math.min(day, 5)}`,
     titleKey: `dayTitles.${Math.min(day, 5)}`,
     weatherSummary: forecast?.conditionKey,
+    rainPlan: forecast && forecast.rainProbability >= 55 ? "rainPlan" : undefined,
     activities,
   };
 }
@@ -153,12 +160,22 @@ function buildWarnings(input: PlannerEngineInput) {
 }
 
 export function generateItinerary(input: PlannerEngineInput): GeneratedItinerary {
-  const groupedPlaces = groupPlacesByDay(input.places, input.days, input.interests);
+  const preferenceFilteredPlaces = input.preferences?.accessibility === "limitedMobility"
+    ? input.places.filter((place) => !["nature", "viewpoint"].includes(place.category))
+    : input.places;
+  const preferenceSortedPlaces = input.preferences?.indoorPreference
+    ? [...preferenceFilteredPlaces].sort((a, b) => Number(["museum", "historicSite"].includes(b.category)) - Number(["museum", "historicSite"].includes(a.category)))
+    : preferenceFilteredPlaces;
+  const effectiveInterests = input.preferences?.travelParty === "family" ? [...input.interests, "Family friendly"] : input.interests;
+  const weatherAwarePlaces = input.weather?.forecast.some((day) => day.rainProbability >= 55)
+    ? [...preferenceSortedPlaces].sort((a, b) => Number(["museum", "historicSite"].includes(b.category)) - Number(["museum", "historicSite"].includes(a.category)))
+    : preferenceSortedPlaces;
+  const groupedPlaces = groupPlacesByDay(weatherAwarePlaces, input.days, effectiveInterests, input.preferences?.pace);
   const dailyPlans = groupedPlaces.map((places, index) =>
     createDayPlan(index + 1, places, input.weather?.forecast[index], input.interests),
   );
   const activities = dailyPlans.flatMap((day) => day.activities);
-  const estimatedCost = estimateTripCost(input.budget, input.days, activities);
+  const estimatedCost = estimateTripCost(input.budget, input.days, activities, input.preferences?.hotelBudgetPercent);
   const warnings = buildWarnings(input);
   const baseItinerary = {
     destination: input.destination,

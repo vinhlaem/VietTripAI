@@ -1,4 +1,4 @@
-import { Coffee, ReceiptText, ShipWheel, Ticket, Utensils } from "lucide-react";
+import { BedDouble, Coffee, ReceiptText, ShipWheel, Ticket, Utensils } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import type { LucideIcon } from "lucide-react";
 import type { TripCostCategory, TripCostEstimate } from "@/features/planner/types";
@@ -9,6 +9,7 @@ type CostBreakdownProps = {
 };
 
 const costIcons: Record<TripCostCategory, LucideIcon> = {
+  Accommodation: BedDouble,
   Food: Utensils,
   Transport: ShipWheel,
   Tickets: Ticket,

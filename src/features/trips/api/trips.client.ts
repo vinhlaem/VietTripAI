@@ -181,6 +181,8 @@ function createSavedTrip(userId: string, tripId: string, input: SaveTripInput): 
     interests: input.interests,
     itinerary: input.itinerary,
     places: input.places,
+    ...(input.recommendations ? { recommendations: input.recommendations } : {}),
+    ...(input.hotelSearch ? { hotelSearch: input.hotelSearch } : {}),
     weather: input.weather,
     ...(input.aiSource ? { aiSource: input.aiSource } : {}),
     createdAt: input.createdAt ?? now,

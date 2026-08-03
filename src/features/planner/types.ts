@@ -3,7 +3,15 @@ import type { NormalizedWeather } from "@/features/weather/types";
 
 export type PlannerTimeOfDay = "morning" | "lunch" | "afternoon" | "evening";
 
-export type TripCostCategory = "Food" | "Transport" | "Tickets" | "CoffeeExtra";
+export type TripCostCategory = "Accommodation" | "Food" | "Transport" | "Tickets" | "CoffeeExtra";
+
+export interface TripPreferences {
+  travelParty: "solo" | "couple" | "family" | "friends";
+  pace: "relaxed" | "balanced" | "active";
+  accessibility: "standard" | "limitedMobility";
+  indoorPreference: boolean;
+  hotelBudgetPercent: number;
+}
 
 export interface PlannerEngineInput {
   destination: string;
@@ -12,6 +20,7 @@ export interface PlannerEngineInput {
   interests: string[];
   places: Place[];
   weather: NormalizedWeather | null;
+  preferences?: TripPreferences;
 }
 
 export interface ActivityPlan {
@@ -25,6 +34,14 @@ export interface ActivityPlan {
   descriptionKey?: string;
   estimatedCost?: number;
   localTip?: string;
+  latitude?: number;
+  longitude?: number;
+  startTime?: string;
+  durationMinutes?: number;
+  travelFromPreviousKm?: number;
+  travelMinutes?: number;
+  environment?: "indoor" | "outdoor" | "mixed";
+  accessibility?: "easy" | "moderate";
 }
 
 export interface DayPlan {
@@ -34,6 +51,7 @@ export interface DayPlan {
   daySummary?: string;
   weatherSummary?: string;
   weatherTip?: string;
+  rainPlan?: string;
   activities: ActivityPlan[];
 }
 
@@ -59,4 +77,5 @@ export interface GeneratedItinerary {
   warnings: string[];
   tips?: string[];
   plannerContext: string;
+  preferences?: TripPreferences;
 }

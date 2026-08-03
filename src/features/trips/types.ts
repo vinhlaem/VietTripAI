@@ -3,6 +3,7 @@ import type { Place } from "@/features/places/types";
 import type { GeneratedItinerary } from "@/features/planner/types";
 import type { NormalizedWeather } from "@/features/weather/types";
 import type { UserTripDocumentPath } from "./utils/tripPaths";
+import type { HotelSearchContext, TripRecommendations } from "@/features/recommendations/types";
 
 export interface TripShareInfo {
   enabled: boolean;
@@ -33,6 +34,8 @@ export interface SavedTrip {
   interests: string[];
   itinerary: GeneratedItinerary;
   places: Place[];
+  recommendations?: TripRecommendations;
+  hotelSearch?: HotelSearchContext;
   weather: NormalizedWeather | null;
   aiSource?: AiPlannerSource;
   share?: TripShareInfo;

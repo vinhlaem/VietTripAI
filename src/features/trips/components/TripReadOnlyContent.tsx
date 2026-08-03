@@ -6,11 +6,13 @@ import { useState, type ReactNode } from "react";
 import { useTranslations } from "next-intl";
 import { DayPlanCard } from "@/features/trip-planner/components/DayPlanCard";
 import { CostBreakdown } from "@/features/trip-planner/components/CostBreakdown";
+import { TripTools } from "@/features/trip-planner/components/TripTools";
 import { PlaceCard } from "@/features/places/components/PlaceCard";
 import { WeatherForecast } from "@/features/weather/components/WeatherForecast";
 import type { MapCenter } from "@/features/map/types";
 import type { NormalizedPlace } from "@/features/places/types";
 import type { SavedTrip } from "../types";
+import { NearbyRecommendations } from "@/features/recommendations/components/NearbyRecommendations";
 import { TripDetailHeader } from "./TripDetailHeader";
 import styles from "./TripDetail.module.scss";
 
@@ -61,7 +63,9 @@ export function TripReadOnlyContent({
     setSelectedPlaceId(place.id);
   }
 
-  const mapCenter = getMapCenter(trip.places);
+  const recommendationPlaces = trip.recommendations ? [...trip.recommendations.hotels, ...trip.recommendations.food, ...trip.recommendations.entertainment] : [];
+  const mapLocations = [...trip.places, ...recommendationPlaces];
+  const mapCenter = getMapCenter(mapLocations);
 
   return (
     <main className={styles.detailPage}>
@@ -94,10 +98,16 @@ export function TripReadOnlyContent({
         </div>
       </section>
 
-      {trip.places.length ? (
+      <TripTools guests={trip.hotelSearch?.guests} startDate={trip.hotelSearch?.checkIn} trip={trip.itinerary} weather={trip.weather} />
+
+      {trip.recommendations ? (
+        <NearbyRecommendations hotelSearch={trip.hotelSearch} recommendations={trip.recommendations} onSelectPlace={handleSelectPlace} selectedPlaceId={selectedPlaceId} />
+      ) : null}
+
+      {mapLocations.length ? (
         <TripMap
           center={mapCenter}
-          locations={trip.places}
+          locations={mapLocations}
           onSelectLocation={setSelectedPlaceId}
           selectedLocationId={selectedPlaceId}
         />

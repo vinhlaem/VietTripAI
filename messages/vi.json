@@ -113,7 +113,34 @@
     "touristAreaLabel": "Khu vực/địa điểm du lịch",
     "touristAreaPlaceholder": "Chọn khu vực du lịch",
     "touristAreaHelper": "Một số tỉnh khá rộng, hãy chọn khu vực du lịch cụ thể để lịch trình chính xác hơn.",
-    "touristAreaFallback": "Chưa có dữ liệu khu vực nổi bật, hệ thống sẽ dùng tỉnh/thành đã chọn."
+    "touristAreaFallback": "Chưa có dữ liệu khu vực nổi bật, hệ thống sẽ dùng tỉnh/thành đã chọn.",
+    "checkOut": "Ngày trả phòng",
+    "guests": "Số khách",
+    "checkIn": "Ngày nhận phòng",
+    "interestsAi": "Gợi ý do AI tạo riêng cho {area}, dựa trên đặc trưng điểm đến và hồ sơ chuyến đi.",
+    "interestsAiLoading": "AI đang tạo sở thích phù hợp với {area}...",
+    "interestsDynamic": "Gợi ý phù hợp với {area}, dựa trên đặc trưng khu vực, địa điểm gần đó và hồ sơ chuyến đi.",
+    "interestsFallback": "Đang dùng sở thích phổ biến vì dữ liệu khu vực chưa sẵn sàng.",
+    "travelParty": "Bạn đi cùng ai?",
+    "pace": "Nhịp độ chuyến đi",
+    "accessibility": "Khả năng di chuyển",
+    "hotelBudgetPercent": "Ngân sách lưu trú (%)",
+    "indoorPreference": "Ưu tiên hoạt động trong nhà",
+    "travelPartyOptions": {
+      "solo": "Một mình",
+      "couple": "Cặp đôi",
+      "family": "Gia đình",
+      "friends": "Nhóm bạn"
+    },
+    "paceOptions": {
+      "relaxed": "Thư giãn",
+      "balanced": "Cân bằng",
+      "active": "Năng động"
+    },
+    "accessibilityOptions": {
+      "standard": "Di chuyển thông thường",
+      "limitedMobility": "Hạn chế di chuyển"
+    }
   },
   "Interests": {
     "ariaLabel": "Sở thích du lịch",
@@ -124,13 +151,18 @@
     "Nature": "Thiên nhiên",
     "Photography": "Chụp ảnh",
     "Night market": "Chợ đêm",
-    "Family friendly": "Phù hợp gia đình"
+    "Family friendly": "Phù hợp gia đình",
+    "Stay": "Lưu trú",
+    "Entertainment": "Vui chơi giải trí"
   },
   "Validation": {
     "destination": "Vui lòng chọn tỉnh/thành.",
     "days": "Vui lòng chọn số ngày.",
     "budget": "Vui lòng chọn ngân sách.",
-    "interests": "Vui lòng chọn ít nhất một sở thích."
+    "interests": "Vui lòng chọn ít nhất một sở thích.",
+    "checkOut": "Ngày trả phòng phải sau ngày nhận phòng.",
+    "guests": "Số khách phải từ 1 trở lên.",
+    "checkIn": "Chọn ngày nhận phòng."
   },
   "Result": {
     "eyebrow": "Lịch trình thông minh",
@@ -184,8 +216,17 @@
       "park": "Công viên",
       "viewpoint": "Điểm ngắm cảnh",
       "historicSite": "Di tích lịch sử",
-      "nature": "Thiên nhiên"
-    }
+      "nature": "Thiên nhiên",
+      "entertainment": "Giải trí",
+      "fastFood": "Đồ ăn nhanh",
+      "guestHouse": "Nhà khách",
+      "nightlife": "Giải trí về đêm",
+      "restaurant": "Nhà hàng",
+      "cafe": "Quán cà phê",
+      "hotel": "Khách sạn",
+      "hostel": "Nhà nghỉ"
+    },
+    "openingHours": "Giờ mở cửa: {value}"
   },
   "Weather": {
     "title": "Thời tiết",
@@ -227,7 +268,8 @@
       "Transport": "Di chuyển",
       "Tickets": "Vé tham quan",
       "Coffee": "Cà phê",
-      "CoffeeExtra": "Cà phê & phát sinh"
+      "CoffeeExtra": "Cà phê & phát sinh",
+      "Accommodation": "Lưu trú"
     }
   },
   "Loading": {
@@ -327,11 +369,76 @@
       "nightMarket": "Kết thúc ngày bằng không khí địa phương, món ăn nhẹ và mua sắm nhỏ.",
       "coffeeBreak": "Chọn một quán cà phê gần điểm tham quan để nghỉ chân và xem lại kế hoạch.",
       "slowStart": "Bắt đầu ngày với bữa sáng, chuẩn bị đồ dùng và di chuyển không quá gấp.",
-      "riversideWalk": "Dành buổi tối để đi bộ nhẹ, chụp ảnh và cảm nhận nhịp thành phố."
+      "riversideWalk": "Dành buổi tối để đi bộ nhẹ, chụp ảnh và cảm nhận nhịp thành phố.",
+      "custom": "Hoạt động do bạn thêm vào lịch trình."
     },
     "aiEnhanced": "Tối ưu bởi AI",
     "basicItinerary": "Lịch trình cơ bản",
-    "aiLoading": "AI đang tối ưu lịch trình..."
+    "aiLoading": "AI đang tối ưu lịch trình...",
+    "minutes": "phút",
+    "travelFromPrevious": "{distance} km · khoảng {minutes} phút từ điểm trước",
+    "environment": {
+      "indoor": "Trong nhà",
+      "outdoor": "Ngoài trời",
+      "mixed": "Trong/ngoài trời"
+    },
+    "accessibility": {
+      "easy": "Dễ tiếp cận",
+      "moderate": "Di chuyển vừa phải"
+    },
+    "actions": {
+      "add": "Thêm hoạt động",
+      "regenerate": "Tạo lại ngày",
+      "edit": "Sửa",
+      "remove": "Xóa",
+      "addPrompt": "Nhập tên hoạt động mới",
+      "editPrompt": "Sửa tên hoạt động",
+      "activityName": "Tên hoạt động",
+      "cancel": "Hủy",
+      "save": "Lưu thay đổi"
+    },
+    "rainPlan": "Phương án mưa: ưu tiên bảo tàng, di tích có mái che, café hoặc hoạt động trong nhà gần tuyến.",
+    "dailyRecommendations": {
+      "food": "Ăn uống gần tuyến",
+      "entertainment": "Giải trí phù hợp buổi tối"
+    }
+  },
+  "Recommendations": {
+    "title": "Gợi ý gần lịch trình",
+    "description": "Các lựa chọn thực tế gần khu vực đã chọn, được ưu tiên theo sở thích và khoảng cách.",
+    "groups": {
+      "hotels": "Nơi lưu trú",
+      "food": "Ăn uống",
+      "entertainment": "Vui chơi & giải trí"
+    },
+    "groupDescriptions": {
+      "hotels": "Các nơi lưu trú gần trung tâm chuyến đi.",
+      "food": "Nhà hàng và quán cà phê thuận tiện.",
+      "entertainment": "Các hoạt động thư giãn và giải trí gần đó."
+    },
+    "checkPrice": "Xem giá phòng",
+    "checkPriceBooking": "Tìm trên Booking",
+    "checkPriceGoogle": "Tìm trên Google"
+  },
+  "TripTools": {
+    "title": "Công cụ chuyến đi",
+    "perPerson": "Khoảng {value} VND/người",
+    "favorite": "Yêu thích",
+    "calendar": "Thêm vào lịch",
+    "print": "In / Lưu PDF",
+    "packingTitle": "Checklist hành lý",
+    "feedbackTitle": "Lịch trình này phù hợp không?",
+    "feedbackDescription": "Phản hồi được lưu trong phiên hiện tại.",
+    "useful": "Phù hợp",
+    "notUseful": "Chưa phù hợp",
+    "packing": {
+      "identification": "Giấy tờ tùy thân",
+      "charger": "Sạc điện thoại và pin dự phòng",
+      "water": "Bình nước cá nhân",
+      "rain": "Ô hoặc áo mưa",
+      "beach": "Đồ bơi và kem chống nắng",
+      "outdoor": "Giày đi bộ và đồ chống nắng"
+    },
+    "hotelBudget": "Lưu trú khoảng {value} VND"
   }
 }
-

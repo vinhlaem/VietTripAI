@@ -2,15 +2,7 @@ import type { LucideIcon } from "lucide-react";
 
 export type Destination = "Đà Nẵng" | "Hội An" | "Huế" | "Đà Lạt" | "Nha Trang";
 
-export type Interest =
-  | "Beach"
-  | "Coffee"
-  | "Local food"
-  | "Culture"
-  | "Nature"
-  | "Photography"
-  | "Night market"
-  | "Family friendly";
+export type Interest = string;
 
 export type PlannerFormValues = {
   province: string;
@@ -18,6 +10,14 @@ export type PlannerFormValues = {
   days: number | "";
   budget: string;
   interests: Interest[];
+  checkIn: string;
+  checkOut: string;
+  guests: number;
+  travelParty: "solo" | "couple" | "family" | "friends";
+  pace: "relaxed" | "balanced" | "active";
+  accessibility: "standard" | "limitedMobility";
+  indoorPreference: boolean;
+  hotelBudgetPercent: number;
 };
 
 export type DayPlan = {

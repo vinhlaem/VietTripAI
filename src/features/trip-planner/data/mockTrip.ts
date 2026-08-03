@@ -79,7 +79,7 @@ export const mockTrip: MockTrip = {
   },
 };
 
-export const interestIcons: Record<Interest, typeof Camera> = {
+export const interestIcons: Partial<Record<Interest, typeof Camera>> = {
   Beach: Umbrella,
   Coffee,
   "Local food": Salad,

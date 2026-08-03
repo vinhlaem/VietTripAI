@@ -74,8 +74,6 @@ export function AuthButton() {
     }
   }
 
-  console.log(user);
-
   if (isLoading) {
     return (
       <button

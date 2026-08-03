@@ -403,6 +403,25 @@
   }
 }
 
+.formInput {
+  width: 100%;
+  min-height: 52px;
+  padding: 0 1rem;
+  border: 1px solid rgba(28, 76, 72, 0.16);
+  border-radius: 8px;
+  color: #182a27;
+  background: rgba(255, 255, 255, 0.88);
+  outline: none;
+
+  &:focus {
+    border-color: rgba(15, 118, 110, 0.56);
+    box-shadow: 0 0 0 4px rgba(15, 118, 110, 0.1);
+  }
+
+  &[aria-invalid="true"] {
+    border-color: rgba(179, 56, 45, 0.55);
+  }
+}
 .fieldWide {
   grid-column: 1 / -1;
   min-width: 0;
@@ -1532,4 +1551,169 @@
     justify-content: flex-start;
     line-height: 1.12;
   }
+}
+
+.dayActions,
+.activityActions,
+.toolActions,
+.feedbackButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.dayActions button,
+.activityActions button,
+.toolActions button,
+.feedbackButtons button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  min-height: 34px;
+  padding: 0 0.65rem;
+  border: 1px solid rgba(15, 118, 110, 0.18);
+  border-radius: 8px;
+  color: #0f766e;
+  background: #fff;
+  font-weight: 760;
+}
+
+.activityMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.activityMeta small {
+  padding: 0.25rem 0.5rem;
+  border-radius: 999px;
+  color: #49615b;
+  background: #edf5f2;
+}
+
+.tripTools {
+  display: grid;
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid rgba(28, 76, 72, 0.12);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.78);
+}
+
+.toolHeader {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.toolHeader h2,
+.toolHeader p,
+.toolGrid h3,
+.toolGrid p {
+  margin: 0;
+}
+
+.toolGrid {
+  display: grid;
+  gap: 1rem;
+}
+
+.checkItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.55rem;
+}
+
+@media (min-width: 760px) {
+  .toolGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media print {
+  .formCard,
+  .toolActions,
+  .activityActions,
+  .dayActions,
+  .feedbackButtons {
+    display: none !important;
+  }
+}
+.dayRecommendations {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 0.85rem;
+  padding: 0.75rem;
+  border-radius: 10px;
+  background: #f3f8f6;
+}
+
+.dayRecommendations > div {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.dayRecommendations button {
+  padding: 0.35rem 0.6rem;
+  border: 1px solid rgba(15, 118, 110, 0.18);
+  border-radius: 999px;
+  color: #0f766e;
+  background: #fff;
+}
+.editorBackdrop {
+  position: fixed;
+  z-index: 2000;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: rgba(9, 23, 20, 0.58);
+}
+
+.editorModal {
+  width: min(100%, 480px);
+  display: grid;
+  gap: 1rem;
+  padding: 1.25rem;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.24);
+}
+
+.editorModal h2 {
+  margin: 0;
+}
+
+.editorModal label {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.editorModal input {
+  min-height: 48px;
+  padding: 0 0.85rem;
+  border: 1px solid rgba(15, 118, 110, 0.25);
+  border-radius: 8px;
+}
+
+.editorActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.6rem;
+}
+
+.editorActions button {
+  min-height: 40px;
+  padding: 0 1rem;
+  border-radius: 8px;
+  font-weight: 800;
+}
+
+.editorActions button:last-child {
+  color: #fff;
+  background: #0f766e;
 }

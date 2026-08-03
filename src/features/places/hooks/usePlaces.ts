@@ -2,10 +2,11 @@
 
 import { useEffect, useState } from "react";
 import { getNearbyPlaces } from "../api/places.api";
-import type { NormalizedPlace } from "../types";
+import type { NormalizedPlace, PlacesQueryGroup } from "../types";
 
 type UsePlacesOptions = {
   enabled?: boolean;
+  group?: PlacesQueryGroup;
 };
 
 type UsePlacesResult = {
@@ -23,7 +24,7 @@ export function usePlaces(
   longitude?: number | null,
   options: UsePlacesOptions = {},
 ): UsePlacesResult {
-  const { enabled = true } = options;
+  const { enabled = true, group = "attraction" } = options;
   const [places, setPlaces] = useState<NormalizedPlace[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<Error | null>(null);
@@ -59,6 +60,7 @@ export function usePlaces(
           const nextPlaces = await getNearbyPlaces(
             resolvedLatitude,
             resolvedLongitude,
+            group,
             controller.signal,
           );
           setPlaces(nextPlaces);
@@ -88,7 +90,7 @@ export function usePlaces(
       window.clearTimeout(timeoutId);
       controller.abort();
     };
-  }, [enabled, latitude, longitude]);
+  }, [enabled, group, latitude, longitude]);
 
   return {
     places,

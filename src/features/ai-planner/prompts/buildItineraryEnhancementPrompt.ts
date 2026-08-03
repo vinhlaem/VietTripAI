@@ -11,8 +11,25 @@ export function buildItineraryEnhancementPrompt(request: AiEnhancementRequest) {
     days: request.days,
     budget: request.budget,
     interests: request.interests,
-    baseItinerary: request.baseItinerary,
-    touristPlaces: request.places.map((place) => ({
+    baseItinerary: {
+      destination: request.baseItinerary.destination,
+      days: request.baseItinerary.days,
+      interests: request.baseItinerary.interests,
+      warnings: request.baseItinerary.warnings,
+      dailyPlans: request.baseItinerary.dailyPlans.map((day) => ({
+        day: day.day,
+        title: day.title,
+        weatherSummary: day.weatherSummary,
+        activities: day.activities.map((activity) => ({
+          id: activity.id,
+          timeOfDay: activity.timeOfDay,
+          title: activity.title,
+          placeName: activity.placeName,
+          description: activity.description,
+        })),
+      })),
+    },
+    touristPlaces: request.places.slice(0, 20).map((place) => ({
       id: place.id,
       name: place.name,
       category: place.category,

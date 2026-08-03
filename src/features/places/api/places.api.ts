@@ -1,4 +1,4 @@
-import type { NormalizedPlace } from "../types";
+import type { NormalizedPlace, PlacesQueryGroup } from "../types";
 
 const PLACES_API_PATH = "/api/places";
 
@@ -15,8 +15,8 @@ function assertCoordinate(value: number, label: "latitude" | "longitude") {
   }
 }
 
-function getCacheKey(latitude: number, longitude: number) {
-  return `${latitude.toFixed(4)}:${longitude.toFixed(4)}`;
+function getCacheKey(latitude: number, longitude: number, group: PlacesQueryGroup) {
+  return latitude.toFixed(4) + ":" + longitude.toFixed(4) + ":" + group;
 }
 
 function isNormalizedPlace(value: unknown): value is NormalizedPlace {
@@ -34,6 +34,7 @@ function isNormalizedPlace(value: unknown): value is NormalizedPlace {
     typeof candidate.longitude === "number" &&
     Number.isFinite(candidate.longitude) &&
     typeof candidate.category === "string" &&
+    typeof candidate.group === "string" &&
     candidate.source === "geoapify"
   );
 }
@@ -46,10 +47,11 @@ function normalizeApiResponse(payload: PlacesApiResponse): NormalizedPlace[] {
   return payload.places.filter(isNormalizedPlace);
 }
 
-function buildPlacesApiUrl(latitude: number, longitude: number) {
+function buildPlacesApiUrl(latitude: number, longitude: number, group: PlacesQueryGroup) {
   const params = new URLSearchParams({
     latitude: latitude.toString(),
     longitude: longitude.toString(),
+    group,
   });
 
   return `${PLACES_API_PATH}?${params.toString()}`;
@@ -58,19 +60,20 @@ function buildPlacesApiUrl(latitude: number, longitude: number) {
 export async function getNearbyPlaces(
   latitude: number,
   longitude: number,
+  group: PlacesQueryGroup = "attraction",
   signal?: AbortSignal,
 ): Promise<NormalizedPlace[]> {
   assertCoordinate(latitude, "latitude");
   assertCoordinate(longitude, "longitude");
 
-  const cacheKey = getCacheKey(latitude, longitude);
+  const cacheKey = getCacheKey(latitude, longitude, group);
   const cachedPlaces = placesCache.get(cacheKey);
 
   if (cachedPlaces) {
     return cachedPlaces;
   }
 
-  const response = await fetch(buildPlacesApiUrl(latitude, longitude), {
+  const response = await fetch(buildPlacesApiUrl(latitude, longitude, group), {
     headers: {
       Accept: "application/json",
     },
